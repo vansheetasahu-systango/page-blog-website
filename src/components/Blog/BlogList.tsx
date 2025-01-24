@@ -12,10 +12,6 @@ interface BlogListProps {
 }
 
 export default function BlogList({ blogs }: BlogListProps) {
-  if (!blogs || blogs.length === 0) {
-    return <p>No blogs available at the moment. Please check back later.</p>;
-  }
-
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       {blogs.map((blog) => (
