@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./about.module.css";
 import { User, Star, Mail } from "lucide-react";
-import Header from "../components/Header/Header";
+import Header from "../../components/Header/Header";
 
 const About: React.FC = () => {
   return (

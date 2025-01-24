@@ -1,5 +1,5 @@
 import Image from 'next/image';  // Import Image from next/image
-import styles from './BlogCard.module.css';
+import styles from '../../styles/BlogCard.module.css';
 
 interface BlogCardProps {
   title: string;

@@ -1,37 +1,27 @@
- 'use client';
+ "use client";
 
-import { redirect } from "next/navigation";
+import Link from "next/link";
 import { useState, useEffect } from "react";
 
-export default function AdminLogoutButton() {
-  const [isAdmin, setIsAdmin] = useState<boolean>(false); // Define state as boolean
+export default function LoginButtonAdmin() {
+  const [isAdmin, setIsAdmin] = useState<boolean>(false);
 
   useEffect(() => {
-    setIsAdmin(localStorage.getItem("isAdmin") === "true");
+    if (typeof window !== "undefined") {
+      const adminStatus = localStorage.getItem("isAdmin") === "true";
+      setIsAdmin(adminStatus);
+    }
   }, []);
-
-  const handleLogout = () => {
-    localStorage.removeItem("isAdmin");
-    setIsAdmin(false);
-    redirect("/login");
-  };
 
   return (
     <>
-      {isAdmin ? (
-        <button
-          onClick={handleLogout}
-          className="px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600"
+      {!isAdmin && (
+        <Link
+          href="/login"
+          className="px-4 py-2 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
         >
-          Logout
-        </button>
-      ) : (
-        <button
-          onClick={() => redirect("/login")}
-          className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600"
-        >
-          Go to Login
-        </button>
+          Login
+        </Link>
       )}
     </>
   );

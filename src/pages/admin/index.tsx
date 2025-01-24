@@ -1,8 +1,8 @@
  'use client';
 
 import { useState, useEffect } from "react";
-import AdminCheck from "../components/AdminCheck";
-import BlogActions from "../components/BlogActions";
+import AdminCheck from "../../components/AdminCheck";
+import BlogActions from "../../components/BlogActions";
 import AdminLogoutButton from "./AdminLogoutButton";
 
 interface Blog {

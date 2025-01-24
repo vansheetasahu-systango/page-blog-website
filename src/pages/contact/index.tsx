@@ -4,7 +4,7 @@ import { useState, ChangeEvent, FormEvent } from "react";
 import { Facebook, Twitter, Linkedin, Instagram } from "lucide-react";
 import { Mail, Phone } from "lucide-react";
 import { MapPin } from "lucide-react";
-import Header from "../components/Header/Header";
+import Header from "../../components/Header/Header";
 
 interface FormData {
   name: string;

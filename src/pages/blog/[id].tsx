@@ -1,22 +1,40 @@
-import { GetServerSideProps } from "next";
-import BlogDetails from "@/components/Blog/BlogDetails";
+import BlogDetails from "../../components/Blog/BlogDetails";
+import styles from "../../styles/blog[id].module.css";
 
-interface BlogPageProps {
-  blog: Blog;
+interface Blog {
+  id: string;
+  title: string;
+  description: string;
+  content: string;
 }
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
-  const { id } = context.params!;
-  const res = await fetch(`https://6787e220c4a42c9161089db1.mockapi.io/blogs/${id}`);
-  const blog = await res.json();
-
-  if (!blog) {
-    return { notFound: true };
+async function fetchBlogDetails(id: string): Promise<Blog> {
+  const res = await fetch(`https://6787e220c4a42c9161089db1.mockapi.io/blogs/${id}`, { cache: "no-store" });
+  if (!res.ok) {
+    throw new Error("Failed to fetch blog details");
   }
+  return res.json();
+}
 
-  return { props: { blog } };
+interface BlogPage {
+  params: { id: string };
+}
+
+export async function getServerSideProps(context: { params: { id: string } }) {
+  const { id } = context.params;
+  const blog = await fetchBlogDetails(id);
+
+  return {
+    props: { blog },
+  };
+}
+
+const BlogPage = ({ blog }: { blog: Blog }) => {
+  return (
+    <div className={styles.container}>
+      <BlogDetails blog={blog} />
+    </div>
+  );
 };
 
-export default function BlogPage({ blog }: BlogPageProps) {
-  return <BlogDetails blog={blog} />;
-}
+export default BlogPage;

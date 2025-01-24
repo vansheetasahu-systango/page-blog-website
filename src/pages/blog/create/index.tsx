@@ -87,7 +87,7 @@ export default function CreateBlogPage() {
             type="text"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
-            className="border p-2 w-full"
+            className="border p-2 w-full text-black"
             required
           />
         </div>
@@ -96,7 +96,7 @@ export default function CreateBlogPage() {
           <textarea
             value={content}
             onChange={(e) => setContent(e.target.value)}
-            className="border p-2 w-full"
+            className="border p-2 w-full text-black"
             required
           />
         </div>
@@ -106,7 +106,7 @@ export default function CreateBlogPage() {
             type="text"
             value={author}
             onChange={(e) => setAuthor(e.target.value)}
-            className="border p-2 w-full"
+            className="border p-2 w-full text-black"
             required
           />
         </div>
@@ -117,18 +117,19 @@ export default function CreateBlogPage() {
             placeholder="Enter Image URL"
             value={thumbnail}
             onChange={(e) => setThumbnail(e.target.value)}
-            className="border p-2 w-full"
+            className="border p-2 w-full text-black"
           />
         </div>
         <div className="flex justify-between items-center">
           <button
             type="submit"
-            className="bg-blue-500 text-white px-4 py-2 rounded"
+            className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition"
           >
             Submit
           </button>
           <button
-            className="bg-gray-500 text-white px-4 py-2 rounded"
+            type="button"
+            className="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600 transition"
             onClick={handleBack}
           >
             Back to Homepage
